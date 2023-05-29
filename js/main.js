@@ -5,6 +5,16 @@ const botonVaciar = document.getElementById('vaciarCarrito');
 const precioTotal = document.getElementById('precioTotal');
 let carrito = [];
 
+class Producto {
+    constructor(id, nombre, precio, imagen, descripcion) {
+        this.id = id;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.imagen = imagen;
+        this.descripcion = descripcion;
+    };
+};
+
 const productos = [
     {id:1, nombre: "Apple MacBook Pro 14 M1", precio: 1499000, imagen: "../img/mbp14.jpg", cantidad:1, descripcion: "Apple MacBook Pro 14 - Chip M1 Pro CPU 8 núcleos - GPU 14 núcleos - 16 GB RAM - 512GB SSD"},
     {id:2, nombre: "Apple MacBook Pro 16 M1", precio: 1999000, imagen: "../img/mbp16.jpg", cantidad:1, descripcion: "Apple MacBook Pro 16.2 - Chip M1 Pro CPU 10 núcleos - GPU 16 núcleos - 16 GB RAM - 512GB SSD"},
@@ -25,9 +35,8 @@ const productos = [
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
-    if(sessionStorage.getItem('carrito')) {
-        carrito = JSON.parse(sessionStorage.getItem('carrito'));
-    }
+    sessionStorage.getItem('carrito') ? carrito = JSON.parse(sessionStorage.getItem('carrito')) : alert("Error al cargar los productos")
+    
     verCarrito();
 });
 
@@ -39,7 +48,7 @@ productos.forEach((producto) => {
     <img class="producto_imagen" src = ${producto.imagen} alt="${producto.nombre}">
     <h4 class="productoTitulo">${producto.nombre}</h4>
     <p class="productoDescripcion">${producto.descripcion}</p>
-    <p class="producto_precio">Precio: $${producto.precio}</p>
+    <p class="producto_precio">Precio: $${producto.precio.toLocaleString('es-CL')}</p>
     <button id="agregar${producto.id}" class="boton_agregar">Agregar</button>
     `
     listaProductos.appendChild(div);
@@ -52,16 +61,19 @@ productos.forEach((producto) => {
 
 const agregarCarrito = (productoId) => {
     const existeProducto = carrito.some(producto => producto.id === productoId);
+    
     if(existeProducto){
-        const producto = carrito.map(producto => {
+        const producto = carrito.map (producto => {
             if(producto.id === productoId){
-                producto.cantidad++
+                 producto.cantidad++
             }
         });
     } else {
     const itemProducto = productos.find((producto) => producto.id === productoId);
     carrito.push(itemProducto);
     };
+
+    
     verCarrito();
 };
 
@@ -73,7 +85,7 @@ const eliminarCarrito = (productoId) => {
 };
 
 botonVaciar.addEventListener('click', () => {
-    carrito.length = "";
+    carrito.length = 0;
     verCarrito();
 });
 
@@ -85,7 +97,7 @@ const verCarrito = () => {
         div.className = ("carrito");
         div.innerHTML = `
         <p>${producto.nombre}</p>
-        <p>Precio:$ ${producto.precio}</p>
+        <p>Precio:$ ${producto.precio.toLocaleString('es-CL')}</p>
         <p>Cantidad: ${producto.cantidad}</p>
         <button onclick = "eliminarCarrito(${producto.id})" class = "boton_eliminar">Eliminar</button>
         `
@@ -94,7 +106,7 @@ const verCarrito = () => {
 
     });
 
-    precioTotal.innerText = carrito.reduce((acc, producto) => acc + producto.precio * producto.cantidad, 0)
+    precioTotal.innerText = carrito.reduce((acc, producto) => acc + producto.precio * producto.cantidad, 0).toLocaleString('es-CL')
 
 };
  
