@@ -4,31 +4,53 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>TecnoPlay</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
 
-    <h1>Bienvenidos a TecnoPlay</h1>
+    <header class="header">
+        <nav class="navbar navbar-expand-md menu">
+            <div class="container-fluid">
+                <img class="logo" src="./img/TecnoPlay_Logo.svg" alt="TecnoPlay"><a href="./index.html"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="menu__item navbar navbar-expand-md navbar-nav">
+                        <li><button type="button" class="btn btn-primary btn-lg btn-menu active"><a href="./index.html">Inicio</a></button></li>
+                        <li><button type="button" class="btn btn-primary btn-lg btn-menu"><a href="./index.html">Tienda</a></button></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>  
+    </header>
 
-    <h2>Lista de productos disponibles</h2>
-    
-    <p>ID: 1 - Producto: Apple MacBook Pro 14 M1 - Precio $: 1.499.000</p>
-    <p>ID: 2 - Producto: Apple MacBook Pro 16 M1 - Precio $: 1.999.000</p>
-    <p>ID: 3 - Producto: Apple MacBook air M1    - Precio $: 799.000</p>
-    <p>ID: 4 - Producto: Samsung Galaxy Book 3 Ultra - Precio $: 2.499.000</p>
-    <p>ID: 5 - Producto: Samsung Galaxy Book 3 Pro - Precio $: 1.599.000</p>
-    <p>ID: 6 - Producto: Xbox Serie S - Precio $: 249.000</p>
-    <p>ID: 7 - Producto: Xbox Serie X - Precio $: 549.000</p>
-    <p>ID: 8 - Producto: PlayStation 5 - Precio $: 649.000</p>
-    <p>ID: 0 - Producto: Nintendo Switch - Precio $: 349.000</p>
-    <p>ID: 10 - Producto: Nintendo Switch OLed - Precio: 449.000</p>
-    <p>ID: 11 - Producto: Apple Iphone 14 Pro Max - Precio $: 1.199.000</p>
-    <p>ID: 12 - Producto: Apple Iphone 14 Pro - Precio $: 1.149.000</p>
-    <p>ID: 13 - Producto: Apple Iphone 14 - Precio $: 799.000</p>
-    <p>ID: 14 - Producto: Samsung Galaxy S23 Ultra - Precio: 1.079.000</p>
-    <p>ID: 15 - Producto: Samsung Galaxy S23 - Precio: 799.000</p>
+    <main>
+        
+        <div>
+            <h1 class="tituloProductos">Lista de Productos</h2>
+        </div>
+        
+        <div class="productos" id="listaProductos"></div>
+        
+        <div>
+            <h2 class="tituloCarrito">Carrito de Compras</h2>
+        </div>
 
+        <div class="contenedorCarrito" id="listaCarrito"></div>
+        <p class="precioTotal">Precio Total: $ <span  id="precioTotal">0</span></p>
+        <button class="vaciarCarrito" id="vaciarCarrito">Vaciar carrito</button>
+            
+    </main>
 
-    <script src="./main.js"></script>
+    <footer class="footer">
+        <p>TecnoPlay - 2023 - Todos los derechos reservados</p>
+
+    </footer>
+
+    <script src="./js/main.js"></script>
 </body>
 </html>
