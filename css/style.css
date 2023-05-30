@@ -6,7 +6,38 @@
   font-family: "Roboto Condensed", sans-serif;
 }
 
+.buscar {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
 
+.campoBuscar {
+  width: 400px;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  padding: 5px;
+}
+
+.campoBuscar:active{
+  border: none;
+}
+
+.botonBuscar {
+  display: flex;
+  background-color: #8bb7e3;
+  color: #163a5f;
+  padding: 10px 30px;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  text-decoration: none;
+  border: none
+}
+
+.botonBuscar:hover {
+  background-color: #0080ff;
+}
 
 .menu {
   width: 100%;
@@ -157,7 +188,6 @@
   gap: 10px;
   color: black;
   font-size: 1.3rem;
-  align-items: center;
   margin: auto;
 }
 
@@ -189,6 +219,8 @@
   justify-content: center;
 
 }
+
+
 
 @media screen and (max-width: 768px) {
 
